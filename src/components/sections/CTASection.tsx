@@ -1,18 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { CalendarPlus } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
-    <section
-      className="py-20"
-      style={{
-        background:
-          "linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 100%)",
-      }}
-    >
+    <section className="py-20 bg-gradient-to-br from-brand-600 to-brand-500">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,12 +24,14 @@ export default function CTASection() {
             sĩ chuyên nghiệp
           </p>
           <Button
-            href="/dat-lich"
+            asChild
             size="lg"
-            className="bg-white !text-[var(--primary-600)] hover:bg-white/90 !shadow-xl"
+            className="bg-white text-brand-600 hover:bg-white/90 shadow-xl h-12 px-8 text-base"
           >
-            <CalendarPlus size={18} />
-            Đặt Lịch Ngay
+            <Link href="/dat-lich">
+              <CalendarPlus size={18} />
+              Đặt Lịch Ngay
+            </Link>
           </Button>
         </motion.div>
       </div>

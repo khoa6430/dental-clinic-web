@@ -5,7 +5,15 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Phone, Mail, Clock } from "lucide-react";
 import { siteConfig, navLinks } from "@/lib/constants/site";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,10 +22,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* Top bar */}
-      <div
-        style={{ backgroundColor: "var(--primary-500)" }}
-        className="hidden md:block"
-      >
+      <div className="hidden md:block bg-brand-500">
         <div className="container flex items-center justify-between py-2">
           <div className="flex items-center gap-6 text-sm text-white/90">
             <a
@@ -43,24 +48,18 @@ export default function Header() {
       </div>
 
       {/* Main nav */}
-      <nav
-        className="bg-white/95 backdrop-blur-md border-b border-[var(--gray-200)]"
-        style={{ boxShadow: "var(--shadow-md)" }}
-      >
+      <nav className="bg-background/95 backdrop-blur-md border-b shadow-sm">
         <div className="container flex items-center justify-between h-[84px]">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg"
-              style={{ backgroundColor: "var(--primary-500)" }}
-            >
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary text-primary-foreground font-bold text-lg">
               TM
             </div>
             <div>
-              <h1 className="text-xl font-bold" style={{ color: "var(--primary-600)" }}>
+              <h1 className="text-xl font-bold text-primary">
                 {siteConfig.name}
               </h1>
-              <p className="text-xs" style={{ color: "var(--gray-500)" }}>
+              <p className="text-xs text-muted-foreground">
                 {siteConfig.slogan}
               </p>
             </div>
@@ -76,62 +75,65 @@ export default function Header() {
                   href={link.href}
                   className={`text-sm font-medium transition-colors relative py-1 ${
                     isActive
-                      ? "text-[var(--primary-600)]"
-                      : "text-[var(--gray-600)] hover:text-[var(--primary-500)]"
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   {link.name}
                   {isActive && (
-                    <span
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full"
-                      style={{ backgroundColor: "var(--primary-500)" }}
-                    />
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-primary" />
                   )}
                 </Link>
               );
             })}
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            className="lg:hidden p-2 rounded-lg hover:bg-[var(--gray-100)] transition"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile nav */}
-        {mobileOpen && (
-          <div className="lg:hidden border-t border-[var(--gray-200)] bg-white">
-            <div className="container py-4 space-y-1">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`block px-4 py-3 rounded-lg text-sm font-medium transition ${
-                      isActive
-                        ? "bg-[var(--primary-50)] text-[var(--primary-600)]"
-                        : "text-[var(--gray-600)] hover:bg-[var(--gray-50)]"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-              <div className="pt-3 px-4">
-                <Button href="/dat-lich" size="md" className="w-full">
-                  <Phone size={16} />
-                  Đặt Lịch Ngay
+          {/* Mobile - Sheet */}
+          <div className="lg:hidden">
+            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu size={24} />
+                  <span className="sr-only">Toggle menu</span>
                 </Button>
-              </div>
-            </div>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px]">
+                <SheetHeader>
+                  <SheetTitle className="text-left text-primary">
+                    {siteConfig.name}
+                  </SheetTitle>
+                </SheetHeader>
+                <Separator className="my-4" />
+                <div className="space-y-1">
+                  {navLinks.map((link) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={`block px-4 py-3 rounded-lg text-sm font-medium transition ${
+                          isActive
+                            ? "bg-primary/10 text-primary"
+                            : "text-muted-foreground hover:bg-muted"
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
+                </div>
+                <Separator className="my-4" />
+                <Button asChild className="w-full" size="lg">
+                  <Link href="/dat-lich">
+                    <Phone size={16} />
+                    Đặt Lịch Ngay
+                  </Link>
+                </Button>
+              </SheetContent>
+            </Sheet>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   );

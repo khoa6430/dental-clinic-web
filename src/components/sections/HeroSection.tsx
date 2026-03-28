@@ -1,20 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { CalendarPlus, ArrowRight } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden" style={{ minHeight: "560px" }}>
+    <section className="relative overflow-hidden min-h-[560px]">
       {/* Background gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 50%, var(--primary-400) 100%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-600 via-brand-500 to-brand-400" />
 
       {/* Pattern overlay */}
       <div
@@ -24,7 +19,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="container relative z-10 flex items-center" style={{ minHeight: "560px" }}>
+      <div className="container relative z-10 flex items-center min-h-[560px]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,14 +54,23 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-wrap gap-4"
           >
-            <Button href="/dat-lich" size="lg" variant="primary" className="bg-white !text-[var(--primary-600)] hover:bg-white/90 !shadow-xl">
-              <CalendarPlus size={18} />
-              Đặt Lịch Ngay
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-brand-600 hover:bg-white/90 shadow-xl h-12 px-6 text-base"
+            >
+              <Link href="/dat-lich">
+                <CalendarPlus size={18} />
+                Đặt Lịch Ngay
+              </Link>
             </Button>
-            <Button href="/dich-vu" size="lg" variant="secondary" className="!border-white/40 !text-white hover:!bg-white/10">
+            <Link
+              href="/dich-vu"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/40 bg-transparent text-white hover:bg-white/10 h-12 px-6 text-base font-medium transition-all"
+            >
               Khám Phá Dịch Vụ
               <ArrowRight size={18} />
-            </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

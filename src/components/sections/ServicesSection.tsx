@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { services } from "@/lib/constants/site";
 import {
   Sparkles,
@@ -10,7 +11,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const iconMap: Record<string, LucideIcon> = {
   Sparkles,
@@ -21,7 +23,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function ServicesSection() {
   return (
-    <section className="section" style={{ backgroundColor: "var(--gray-50)" }}>
+    <section className="section bg-muted/50">
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">Dịch Vụ Của Chúng Tôi</h2>
@@ -40,38 +42,31 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-white rounded-xl border border-[var(--gray-200)] p-6 text-center hover:border-[var(--primary-200)] hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                <div
-                  className="w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform"
-                  style={{
-                    backgroundColor: "var(--primary-50)",
-                    color: "var(--primary-500)",
-                  }}
-                >
-                  {Icon && <Icon size={28} />}
-                </div>
-                <h3
-                  className="font-semibold mb-2"
-                  style={{ color: "var(--gray-800)" }}
-                >
-                  {service.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed mb-4"
-                  style={{ color: "var(--gray-500)" }}
-                >
-                  {service.description}
-                </p>
+                <Card className="text-center p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 group h-full">
+                  <CardContent className="p-0">
+                    <div className="w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-4 bg-brand-50 text-brand-500 group-hover:scale-110 transition-transform">
+                      {Icon && <Icon size={28} />}
+                    </div>
+                    <h3 className="font-semibold mb-2 text-foreground">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
               </motion.div>
             );
           })}
         </div>
 
         <div className="text-center mt-10">
-          <Button href="/dich-vu" variant="primary" size="md">
-            Xem Tất Cả Dịch Vụ
-            <ArrowRight size={16} />
+          <Button asChild size="lg">
+            <Link href="/dich-vu">
+              Xem Tất Cả Dịch Vụ
+              <ArrowRight size={16} />
+            </Link>
           </Button>
         </div>
       </div>

@@ -3,10 +3,11 @@
 import { testimonials } from "@/lib/constants/site";
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function TestimonialsSection() {
   return (
-    <section className="section" style={{ backgroundColor: "var(--gray-50)" }}>
+    <section className="section bg-muted/50">
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">Khách Hàng Nói Gì Về Chúng Tôi</h2>
@@ -23,35 +24,31 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="bg-white rounded-xl border border-[var(--gray-200)] p-6 hover:shadow-lg transition-shadow duration-300"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: item.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    size={18}
-                    fill="#FBBF24"
-                    stroke="#FBBF24"
-                  />
-                ))}
-              </div>
+              <Card className="p-6 hover:shadow-lg transition-shadow duration-300 h-full">
+                <CardContent className="p-0">
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: item.rating }).map((_, i) => (
+                      <Star
+                        key={i}
+                        size={18}
+                        className="fill-star text-star"
+                      />
+                    ))}
+                  </div>
 
-              {/* Content */}
-              <p
-                className="text-sm leading-relaxed mb-5 italic"
-                style={{ color: "var(--gray-600)" }}
-              >
-                {item.content}
-              </p>
+                  {/* Content */}
+                  <p className="text-sm leading-relaxed mb-5 italic text-muted-foreground">
+                    {item.content}
+                  </p>
 
-              {/* Author */}
-              <p
-                className="text-sm font-semibold"
-                style={{ color: "var(--gray-800)" }}
-              >
-                {item.name}
-              </p>
+                  {/* Author */}
+                  <p className="text-sm font-semibold text-foreground">
+                    {item.name}
+                  </p>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>
