@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
         <div className="section-header">
           <h2 className="section-title">Khách Hàng Nói Gì Về Chúng Tôi</h2>
           <p className="section-subtitle">
-            Những phản hồi chân thực từ khách hàng
+            Những phản hồi chân thực từ khách hàng (Đánh giá 4.7/5 ★ trên Google Maps)
           </p>
         </div>
 

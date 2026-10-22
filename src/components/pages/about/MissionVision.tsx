@@ -48,7 +48,7 @@ export default function MissionVision() {
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Trở thành địa chỉ nha khoa uy tín, đáng tin cậy hàng đầu tại
-                  TP. Hồ Chí Minh, tiên phong ứng dụng công nghệ nha khoa kỹ
+                  tỉnh Đồng Nai, tiên phong ứng dụng công nghệ nha khoa kỹ
                   thuật số hiện đại vì lợi ích của cộng đồng.
                 </p>
               </CardContent>

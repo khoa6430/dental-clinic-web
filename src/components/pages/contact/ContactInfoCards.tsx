@@ -10,7 +10,7 @@ const contactCards = [
     icon: MapPin,
     title: "Địa Chỉ Phòng Khám",
     primary: siteConfig.address,
-    secondary: "Mặt tiền đường lớn, dễ tìm kiếm",
+    secondary: `Google Maps: ${siteConfig.plusCode} (${siteConfig.googleRating} ★)`,
     color: "bg-blue-50 text-blue-600",
   },
   {
@@ -31,9 +31,9 @@ const contactCards = [
   },
   {
     icon: Clock,
-    title: "Giờ Làm Việc",
+    title: "Giờ Mở Cửa",
     primary: siteConfig.workingHours,
-    secondary: "Mở cửa cả Thứ 7 & Chủ Nhật",
+    secondary: "Mở cửa phục vụ 24/7 tất cả các ngày",
     color: "bg-amber-50 text-amber-600",
   },
 ];

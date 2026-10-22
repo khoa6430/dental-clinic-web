@@ -33,7 +33,7 @@ export default function OurStory() {
             <p className="text-muted-foreground leading-relaxed mb-6">
               Nha Khoa Thu Mảnh được thành lập năm 2010 bởi BS. Thu Mảnh với mong muốn
               mang đến dịch vụ nha khoa chất lượng cao, tận tâm và đáng tin cậy cho
-              người dân TP. Hồ Chí Minh.
+              người dân khu phố Hưng Thịnh, tỉnh Đồng Nai và khu vực lân cận.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Trải qua 15 năm phát triển, chúng tôi tự hào là địa chỉ nha khoa được

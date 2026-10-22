@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { siteConfig, navLinks } from "@/lib/constants/site";
 import { Separator } from "@/components/ui/separator";
 

@@ -6,7 +6,7 @@ const milestones = [
   {
     year: "2010",
     title: "Thành Lập",
-    description: "Nha Khoa Thu Mảnh chính thức khai trương tại Quận 10, TP.HCM với quy mô 2 ghế điều trị.",
+    description: "Nha Khoa Thu Mảnh chính thức khai trương tại khu phố Hưng Thịnh, Đồng Nai với quy mô 2 ghế điều trị.",
   },
   {
     year: "2013",
@@ -51,7 +51,7 @@ export default function Timeline() {
             </span>
             <h2 className="section-title">Các Mốc Quan Trọng</h2>
             <p className="section-subtitle">
-              Từ một phòng khám nhỏ đến địa chỉ nha khoa uy tín của TP.HCM
+              Từ một phòng khám nhỏ đến địa chỉ nha khoa uy tín tại Đồng Nai
             </p>
           </motion.div>
         </div>

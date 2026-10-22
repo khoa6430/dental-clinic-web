@@ -4,10 +4,12 @@ export const siteConfig = {
   description:
     "Nha Khoa Thu Mảnh - Nơi mang đến giải pháp chăm sóc răng miệng toàn diện với công nghệ hiện đại và đội ngũ bác sĩ giàu kinh nghiệm.",
   url: "https://nhakhoathumanh.vn",
-  phone: "0901 234 567",
+  phone: "0941 829 179",
   email: "nhakhoathumanh@gmail.com",
-  address: "123 Đường Lý Thường Kiệt, Quận 10, TP. Hồ Chí Minh",
-  workingHours: "Thứ 2 - Chủ Nhật: 8:00 - 20:00",
+  address: "Số 11, Đường số 20, khu phố Hưng Thịnh, Đồng Nai",
+  plusCode: "W3RG+CR2",
+  googleRating: "4.7/5",
+  workingHours: "Cả tuần, 24 giờ mỗi ngày (24/7)",
   social: {
     facebook: "https://facebook.com/nhakhoathumanh",
     instagram: "https://instagram.com/nhakhoathumanh",

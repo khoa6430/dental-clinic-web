@@ -255,7 +255,7 @@ export default function ContactFormMap() {
             <Card className="border border-border/70 shadow-lg overflow-hidden flex-1 min-h-[340px]">
               <iframe
                 title="Bản đồ Nha Khoa Thu Mảnh"
-                src="https://www.google.com/maps?q=123+L%C3%BD+Th%C6%B0%E1%BB%9Dng+Ki%E1%BB%87t,+Qu%E1%BA%ADn+10,+H%E1%BB%93+Ch%C3%AD+Minh&output=embed"
+                src="https://www.google.com/maps?q=W3RG%2BCR2,+S%E1%BB%91+11+%C4%90%C6%B0%E1%BB%9Dng+s%E1%BB%91+20,+khu+ph%E1%BB%91+H%C6%B0ng+Th%E1%BB%8Bnh,+%C4%90%E1%BB%93ng+Nai&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "340px" }}
@@ -276,10 +276,15 @@ export default function ContactFormMap() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Phòng khám tọa lạc tại{" "}
                   <strong className="text-foreground">
-                    {siteConfig.address}
+                    {siteConfig.plusCode}, {siteConfig.address}
                   </strong>
-                  , gần giao lộ Lý Thường Kiệt – 3 Tháng 2, thuận tiện di chuyển
-                  từ các Quận 1, Quận 3, Quận 5, Quận 11 và Tân Bình.
+                  , mở cửa phục vụ{" "}
+                  <strong className="text-foreground">24/7</strong> (cả tuần, 24
+                  giờ mỗi ngày) và nhận được đánh giá{" "}
+                  <strong className="text-foreground">
+                    {siteConfig.googleRating} sao
+                  </strong>{" "}
+                  trên Google Maps.
                 </p>
                 <div className="flex items-center gap-2.5 text-sm text-emerald-700 bg-emerald-50 px-4 py-3 rounded-xl">
                   <Car size={18} className="shrink-0" />
