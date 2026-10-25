@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   Sparkles,
   Loader2,
+  MessageCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { detailedServices, siteConfig } from "@/lib/constants/site";
@@ -443,7 +444,21 @@ function BookingFormInner() {
             phút để xác nhận lịch khám chính thức.
           </p>
 
-          <DialogFooter className="sm:justify-center">
+          <DialogFooter className="flex-col sm:flex-row sm:justify-center gap-2.5">
+            <Button
+              asChild
+              variant="outline"
+              className="w-full sm:w-auto border-[#0068FF]/40 text-[#0068FF] hover:bg-[#0068FF]/10 hover:text-[#0068FF]"
+            >
+              <a
+                href={siteConfig.zaloUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle size={16} />
+                Nhắn Zalo OA Ngay
+              </a>
+            </Button>
             <Button
               onClick={() => {
                 setDialogOpen(false);
@@ -548,6 +563,21 @@ export default function BookingFormSection() {
                     </div>
                   </div>
                 </div>
+
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="w-full bg-white text-[#0068FF] hover:bg-white/90 font-semibold shadow-sm"
+                >
+                  <a
+                    href={siteConfig.zaloUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle size={17} />
+                    Chat Zalo OA Tư Vấn 24/7
+                  </a>
+                </Button>
               </CardContent>
             </Card>
 

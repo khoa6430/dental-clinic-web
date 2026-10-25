@@ -79,7 +79,6 @@ export default function ServicesGrid() {
                     </ul>
 
                     <Separator className="mb-5" />
-
                     {/* Footer: Reference Price + Book Button */}
                     <div className="flex items-center justify-between gap-4">
                       <div>

@@ -1,3 +1,7 @@
+const zaloOaId = process.env.NEXT_PUBLIC_ZALO_OA_ID?.trim() || "";
+const defaultZaloPhone = "0941829179";
+const zaloUrl = `https://zalo.me/${zaloOaId || defaultZaloPhone}`;
+
 export const siteConfig = {
   name: "Nha Khoa Thu Mảnh",
   slogan: "Nụ cười tự tin - Sức khỏe trọn vẹn",
@@ -10,10 +14,13 @@ export const siteConfig = {
   plusCode: "W3RG+CR2",
   googleRating: "4.7/5",
   workingHours: "Cả tuần, 24 giờ mỗi ngày (24/7)",
+  zaloOaId,
+  zaloUrl,
   social: {
     facebook: "https://facebook.com/nhakhoathumanh",
     instagram: "https://instagram.com/nhakhoathumanh",
     youtube: "https://youtube.com/nhakhoathumanh",
+    zalo: zaloUrl,
   },
 } as const;
 

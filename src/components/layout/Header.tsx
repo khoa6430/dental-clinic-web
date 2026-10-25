@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Phone, Mail, Clock } from "lucide-react";
+import { Menu, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { siteConfig, navLinks } from "@/lib/constants/site";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,6 +31,15 @@ export default function Header() {
             >
               <Phone size={14} />
               {siteConfig.phone}
+            </a>
+            <a
+              href={siteConfig.zaloUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white transition font-medium"
+            >
+              <MessageCircle size={14} />
+              Chat Zalo OA
             </a>
             <a
               href={`mailto:${siteConfig.email}`}
@@ -124,12 +133,30 @@ export default function Header() {
                   })}
                 </div>
                 <Separator className="my-4" />
-                <Button asChild className="w-full" size="lg">
-                  <Link href="/dat-lich">
-                    <Phone size={16} />
-                    Đặt Lịch Ngay
-                  </Link>
-                </Button>
+                <div className="space-y-2.5">
+                  <Button asChild className="w-full" size="lg">
+                    <Link href="/dat-lich" onClick={() => setMobileOpen(false)}>
+                      <Phone size={16} />
+                      Đặt Lịch Ngay
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full border-[#0068FF]/30 text-[#0068FF] hover:bg-[#0068FF]/10 hover:text-[#0068FF]"
+                    size="lg"
+                  >
+                    <a
+                      href={siteConfig.zaloUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <MessageCircle size={16} />
+                      Chat Zalo OA (24/7)
+                    </a>
+                  </Button>
+                </div>
               </SheetContent>
             </Sheet>
           </div>

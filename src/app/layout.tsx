@@ -3,6 +3,7 @@ import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import FloatingContactButtons from "@/components/layout/FloatingContactButtons";
 import { siteConfig } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
 
@@ -66,6 +67,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingContactButtons />
       </body>
     </html>
   );

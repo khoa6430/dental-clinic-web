@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { siteConfig, navLinks } from "@/lib/constants/site";
 import { Separator } from "@/components/ui/separator";
 
@@ -78,6 +78,20 @@ export default function Footer() {
                 >
                   <Phone size={18} className="text-brand-400 shrink-0" />
                   {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.zaloUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-brand-300 hover:text-white transition"
+                >
+                  <MessageCircle
+                    size={18}
+                    className="text-brand-400 shrink-0"
+                  />
+                  Zalo OA: {siteConfig.phone}
                 </a>
               </li>
               <li>
