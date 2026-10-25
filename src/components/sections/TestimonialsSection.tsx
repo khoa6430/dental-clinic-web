@@ -12,7 +12,8 @@ export default function TestimonialsSection() {
         <div className="section-header">
           <h2 className="section-title">Khách Hàng Nói Gì Về Chúng Tôi</h2>
           <p className="section-subtitle">
-            Những phản hồi chân thực từ khách hàng (Đánh giá 4.7/5 ★ trên Google Maps)
+            Những phản hồi chân thực từ khách hàng (Đánh giá 4.7/5 ★ trên Google
+            Maps)
           </p>
         </div>
 
@@ -26,15 +27,11 @@ export default function TestimonialsSection() {
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
               <Card className="p-6 hover:shadow-lg transition-shadow duration-300 h-full">
-                <CardContent className="p-0">
+                <CardContent className="p-0 flex flex-col flex-1">
                   {/* Stars */}
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: item.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        size={18}
-                        className="fill-star text-star"
-                      />
+                      <Star key={i} size={18} className="fill-star text-star" />
                     ))}
                   </div>
 
@@ -44,7 +41,7 @@ export default function TestimonialsSection() {
                   </p>
 
                   {/* Author */}
-                  <p className="text-sm font-semibold text-foreground">
+                  <p className="text-sm font-semibold text-foreground mt-auto">
                     {item.name}
                   </p>
                 </CardContent>

@@ -51,16 +51,14 @@ export const services = [
     id: "nieng-rang",
     icon: "SmilePlus",
     title: "Niềng Răng",
-    description:
-      "Niềng răng trong suốt Invisalign, mang lại nụ cười hoàn hảo",
+    description: "Niềng răng trong suốt Invisalign, mang lại nụ cười hoàn hảo",
     price: "Từ 15.000.000đ",
   },
   {
     id: "cay-ghep-implant",
     icon: "Puzzle",
     title: "Cấy Ghép Implant",
-    description:
-      "Giải pháp phục hồi răng mất vĩnh viễn, bền đẹp tự nhiên",
+    description: "Giải pháp phục hồi răng mất vĩnh viễn, bền đẹp tự nhiên",
     price: "Từ 18.000.000đ/răng",
   },
   {
@@ -203,8 +201,7 @@ export const whyChooseUs = [
   {
     icon: "HeartHandshake",
     title: "Dịch Vụ Tận Tâm",
-    description:
-      "Luôn đặt sức khỏe và sự hài lòng của khách hàng lên hàng đầu",
+    description: "Luôn đặt sức khỏe và sự hài lòng của khách hàng lên hàng đầu",
   },
 ] as const;
 
@@ -233,19 +230,19 @@ export const treatmentProcess = [
 
 export const testimonials = [
   {
-    name: "Nguyễn Thị Lan",
+    name: "Lê Đăng Khoa",
     rating: 5,
     content:
       '"Dịch vụ tuyệt vời, bác sĩ rất tận tâm. Tôi rất hài lòng với kết quả niềng răng tại đây."',
   },
   {
-    name: "Trần Văn Minh",
+    name: "Lê Anh Tuấn",
     rating: 5,
     content:
       '"Phòng khám sạch sẽ, nhân viên thân thiện. Tôi đã làm implant ở đây và rất hài lòng."',
   },
   {
-    name: "Lê Thị Hương",
+    name: "Lục Đan Trân",
     rating: 5,
     content:
       '"Giá cả hợp lý, chất lượng tốt. Tôi sẽ giới thiệu cho bạn bè và người thân."',
