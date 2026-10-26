@@ -7,7 +7,7 @@ export const siteConfig = {
   slogan: "Nụ cười tự tin - Sức khỏe trọn vẹn",
   description:
     "Nha Khoa Thu Mảnh - Nơi mang đến giải pháp chăm sóc răng miệng toàn diện với công nghệ hiện đại và đội ngũ bác sĩ giàu kinh nghiệm.",
-  url: "https://nhakhoathumanh.vn",
+  url: "https://nhakhoathumanh.com",
   phone: "0941 829 179",
   email: "nhakhoathumanh@gmail.com",
   address: "Số 11, Đường số 20, khu phố Hưng Thịnh, Đồng Nai",

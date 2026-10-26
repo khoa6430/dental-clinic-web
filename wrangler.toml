@@ -1,6 +1,11 @@
 name = "dental-clinic-web"
 compatibility_date = "2026-01-01"
 
+routes = [
+  { pattern = "nhakhoathumanh.com", custom_domain = true },
+  { pattern = "www.nhakhoathumanh.com", custom_domain = true }
+]
+
 [assets]
 directory = "./out"
 not_found_handling = "404-page"
