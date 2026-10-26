@@ -1,0 +1,26 @@
+{
+  "name": "Nha Khoa Thu Mảnh",
+  "short_name": "NK Thu Mảnh",
+  "description": "Nha Khoa Thu Mảnh - Nụ cười tự tin, Sức khỏe trọn vẹn. Mở cửa phục vụ 24/7 tại Hưng Thịnh, Đồng Nai.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1A56DB",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

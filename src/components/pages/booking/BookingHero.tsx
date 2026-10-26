@@ -18,7 +18,7 @@ export default function BookingHero() {
         }}
       />
 
-      <div className="container relative z-10 py-20">
+      <div className="container relative z-10 py-10 sm:py-14 md:py-20">
         {/* Breadcrumb */}
         <motion.nav
           initial={{ opacity: 0, y: -10 }}
@@ -44,7 +44,7 @@ export default function BookingHero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-2xl"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 md:mb-6 leading-tight">
             Đặt Lịch Hẹn Khám
           </h1>
           <p className="text-xl text-white/85 leading-relaxed">

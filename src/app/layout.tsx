@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import FloatingContactButtons from "@/components/layout/FloatingContactButtons";
 import { siteConfig } from "@/lib/constants/site";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const inter = Inter({
   subsets: ["latin", "vietnamese"],
@@ -15,12 +16,25 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#1A56DB",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   title: {
     default: `${siteConfig.name} | ${siteConfig.slogan}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: siteConfig.name,
+  },
   keywords: [
     "nha khoa",
     "phòng khám nha khoa",
@@ -62,12 +76,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={cn("font-sans", geist.variable)}>
+    <html lang="vi" className={cn("font-sans", geist.variable, inter.variable)}>
       <body className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
         <FloatingContactButtons />
+        <MobileBottomNav />
       </body>
     </html>
   );
