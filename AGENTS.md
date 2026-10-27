@@ -12,6 +12,7 @@ Operational instructions for AI coding agents (Antigravity, Claude Code, Cursor,
 - **Domain:** Dental clinic marketing & appointment booking web application for **Nha Khoa Thu Mảnh**.
 - **Clinic Info (Single Source of Truth in `src/lib/constants/site.ts`):**
   - **Name:** Nha Khoa Thu Mảnh (`BS. Thu Mảnh`)
+  - **Website:** `https://nhakhoathumanh.com` (`https://www.nhakhoathumanh.com`)
   - **Address:** Số 11, Đường số 20, khu phố Hưng Thịnh, Đồng Nai (Google Maps Plus Code: `W3RG+CR2`)
   - **Phone:** `0941 829 179` (`tel:0941829179`)
   - **Hours:** Mở cửa phục vụ 24/7 (`Cả tuần, 24 giờ mỗi ngày (24/7)`)
@@ -46,3 +47,4 @@ Read these detailed references inside `docs/` when working on specific areas:
 - [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) — System architecture, directory tree, route map & component breakdown.
 - [`docs/DESIGN_SYSTEM.md`](./docs/DESIGN_SYSTEM.md) — Color palette (`--brand-*`), typography, layout classes & UI patterns.
 - [`docs/API_SPEC.md`](./docs/API_SPEC.md) — Frontend ↔ C# ASP.NET Core 9 Web API contract, DTOs & database schema.
+- [`docs/DEPLOYMENT_AND_DOMAIN.md`](./docs/DEPLOYMENT_AND_DOMAIN.md) — Domain registrar (Spaceship), Cloudflare DNS nameservers, Workers static export CI/CD & custom domain routing (`nhakhoathumanh.com`).

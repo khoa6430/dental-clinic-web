@@ -13,6 +13,7 @@ Mọi thông tin liên hệ và nội dung hiển thị trên website được q
 | **Tên phòng khám** | Nha Khoa Thu Mảnh |
 | **Bác sĩ phụ trách** | BS. Thu Mảnh (Hơn 15 năm kinh nghiệm) |
 | **Slogan** | Nụ cười tự tin - Sức khỏe trọn vẹn |
+| **Website chính thức** | [`https://nhakhoathumanh.com`](https://nhakhoathumanh.com) / [`https://www.nhakhoathumanh.com`](https://www.nhakhoathumanh.com) |
 | **Địa chỉ** | Số 11, Đường số 20, khu phố Hưng Thịnh, Đồng Nai |
 | **Mã Google Maps (Plus Code)** | `W3RG+CR2` |
 | **Hotline** | `0941 829 179` (`tel:0941829179`) |
@@ -33,6 +34,10 @@ Mọi thông tin liên hệ và nội dung hiển thị trên website được q
 3. **[`API_SPEC.md`](./API_SPEC.md)**
    - Đặc tả REST API giữa Next.js (`apiClient`) và C# ASP.NET Core 9 Web API.
    - Cấu trúc TypeScript interfaces, DTOs và thiết kế bảng cơ sở dữ liệu (SQL Server / PostgreSQL).
+4. **[`DEPLOYMENT_AND_DOMAIN.md`](./DEPLOYMENT_AND_DOMAIN.md)**
+   - Thông tin đăng ký tên miền `nhakhoathumanh.com` (Spaceship), cấu hình DNS Nameservers, hạ tầng Cloudflare Workers và quy trình CI/CD tự động.
+5. **[`FIGMA_MOBILE_TABLET_SPEC.md`](./FIGMA_MOBILE_TABLET_SPEC.md)**
+   - Đặc tả thiết kế giao diện Mobile & Tablet (`390px` / `768px`) và thanh điều hướng đáy `MobileBottomNav`.
 
 ---
 
