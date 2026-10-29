@@ -4,10 +4,14 @@ import ContactInfoCards from "@/components/pages/contact/ContactInfoCards";
 import ContactFormMap from "@/components/pages/contact/ContactFormMap";
 import CTASection from "@/components/sections/CTASection";
 
+import { siteConfig } from "@/lib/constants/site";
+
 export const metadata: Metadata = {
-  title: "Liên Hệ | Nha Khoa Thu Mảnh",
-  description:
-    "Liên hệ Nha Khoa Thu Mảnh tại W3RG+CR2, Số 11, Đường số 20, khu phố Hưng Thịnh, Đồng Nai. Mở cửa phục vụ 24/7. Hotline tư vấn miễn phí: 0941 829 179.",
+  title: "Liên Hệ",
+  description: `Liên hệ ${siteConfig.name} tại ${siteConfig.plusCode}, ${siteConfig.address}. Mở cửa phục vụ 24/7. Hotline tư vấn miễn phí: ${siteConfig.phone}.`,
+  alternates: {
+    canonical: "/lien-he",
+  },
 };
 
 export default function LienHePage() {

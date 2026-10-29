@@ -1,8 +1,7 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { useForm, Controller } from "react-hook-form";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -10,8 +9,6 @@ import {
   Clock,
   User,
   Phone,
-  Mail,
-  FileText,
   CheckCircle2,
   MapPin,
   ShieldCheck,
@@ -20,21 +17,13 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { detailedServices, siteConfig } from "@/lib/constants/site";
+import { siteConfig } from "@/lib/constants/site";
 import { apiClient } from "@/lib/api/client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Dialog,
   DialogContent,
@@ -45,24 +34,15 @@ import {
 } from "@/components/ui/dialog";
 
 const bookingSchema = z.object({
-  fullName: z
-    .string()
-    .min(2, "Vui lòng nhập họ và tên (tối thiểu 2 ký tự)"),
+  fullName: z.string().min(2, "Vui lòng nhập họ và tên (tối thiểu 2 ký tự)"),
   phone: z
     .string()
     .regex(
       /^(0|\+84)[0-9]{8,10}$/,
-      "Số điện thoại không hợp lệ (VD: 0901234567)"
+      "Số điện thoại không hợp lệ (VD: 0941829179)",
     ),
-  email: z
-    .string()
-    .email("Địa chỉ email không hợp lệ")
-    .optional()
-    .or(z.literal("")),
-  serviceId: z.string().min(1, "Vui lòng chọn dịch vụ khám"),
   preferredDate: z.string().min(1, "Vui lòng chọn ngày khám"),
   preferredTime: z.string().min(1, "Vui lòng chọn khung giờ khám"),
-  notes: z.string().optional(),
 });
 
 type BookingFormValues = z.infer<typeof bookingSchema>;
@@ -82,18 +62,15 @@ const timeSlots = [
 
 const bookingNotes = [
   "Miễn phí thăm khám và tư vấn phương án điều trị ban đầu",
-  "Nhân viên lễ tân sẽ gọi xác nhận lịch hẹn trong vòng 15 phút",
+  "Nhân viên sẽ gọi xác nhận lịch hẹn trong vòng 15 phút",
   "Hỗ trợ đổi hoặc hủy lịch hẹn linh hoạt, hoàn toàn miễn phí",
   "Quý khách vui lòng đến trước giờ hẹn 10 phút để làm thủ tục",
 ];
 
 function BookingFormInner() {
-  const searchParams = useSearchParams();
-  const preselectedService = searchParams.get("service") || "";
-
   const [submitting, setSubmitting] = useState(false);
   const [submittedData, setSubmittedData] = useState<BookingFormValues | null>(
-    null
+    null,
   );
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -102,7 +79,6 @@ function BookingFormInner() {
   const {
     register,
     handleSubmit,
-    control,
     setValue,
     watch,
     reset,
@@ -112,19 +88,10 @@ function BookingFormInner() {
     defaultValues: {
       fullName: "",
       phone: "",
-      email: "",
-      serviceId: preselectedService || "",
       preferredDate: todayStr,
       preferredTime: "09:00",
-      notes: "",
     },
   });
-
-  useEffect(() => {
-    if (preselectedService) {
-      setValue("serviceId", preselectedService);
-    }
-  }, [preselectedService, setValue]);
 
   const selectedTime = watch("preferredTime");
 
@@ -139,12 +106,6 @@ function BookingFormInner() {
       setSubmittedData(values);
       setDialogOpen(true);
     }
-  };
-
-  const getServiceTitle = (id: string) => {
-    if (id === "kham-tong-quat") return "Khám & Tư vấn tổng quát";
-    const found = detailedServices.find((s) => s.id === id);
-    return found ? found.title : id;
   };
 
   return (
@@ -207,7 +168,7 @@ function BookingFormInner() {
                     <Input
                       id="phone"
                       type="tel"
-                      placeholder="0901 234 567"
+                      placeholder="0941 829 179"
                       className="pl-9 h-10"
                       aria-invalid={!!errors.phone}
                       {...register("phone")}
@@ -216,29 +177,6 @@ function BookingFormInner() {
                   {errors.phone && (
                     <p className="text-xs text-destructive">
                       {errors.phone.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="email">Email (Không bắt buộc)</Label>
-                  <div className="relative">
-                    <Mail
-                      size={16}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
-                    />
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="example@gmail.com"
-                      className="pl-9 h-10"
-                      aria-invalid={!!errors.email}
-                      {...register("email")}
-                    />
-                  </div>
-                  {errors.email && (
-                    <p className="text-xs text-destructive">
-                      {errors.email.message}
                     </p>
                   )}
                 </div>
@@ -253,46 +191,8 @@ function BookingFormInner() {
               </div>
               <Separator />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
-                <div className="space-y-2">
-                  <Label>
-                    Dịch vụ quan tâm <span className="text-destructive">*</span>
-                  </Label>
-                  <Controller
-                    control={control}
-                    name="serviceId"
-                    render={({ field }) => (
-                      <Select
-                        value={field.value}
-                        onValueChange={field.onChange}
-                      >
-                        <SelectTrigger
-                          className="w-full data-[size=default]:h-10"
-                          aria-invalid={!!errors.serviceId}
-                        >
-                          <SelectValue placeholder="Chọn dịch vụ nha khoa" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="kham-tong-quat">
-                            Khám & Tư vấn tổng quát (Miễn phí)
-                          </SelectItem>
-                          {detailedServices.map((s) => (
-                            <SelectItem key={s.id} value={s.id}>
-                              {s.title} ({s.price})
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    )}
-                  />
-                  {errors.serviceId && (
-                    <p className="text-xs text-destructive">
-                      {errors.serviceId.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
+              <div className="space-y-5 pt-2">
+                <div className="space-y-2 max-w-sm">
                   <Label htmlFor="preferredDate">
                     Ngày khám mong muốn{" "}
                     <span className="text-destructive">*</span>
@@ -363,20 +263,6 @@ function BookingFormInner() {
                     </p>
                   )}
                 </div>
-
-                {/* Notes */}
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="notes" className="flex items-center gap-1.5">
-                    <FileText size={15} className="text-muted-foreground" />
-                    Ghi chú / Triệu chứng (Không bắt buộc)
-                  </Label>
-                  <Textarea
-                    id="notes"
-                    rows={4}
-                    placeholder="Mô tả ngắn gọn tình trạng răng miệng hoặc yêu cầu đặc biệt của bạn..."
-                    {...register("notes")}
-                  />
-                </div>
               </div>
             </div>
 
@@ -423,12 +309,6 @@ function BookingFormInner() {
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Số điện thoại:</span>
                 <span className="font-semibold">{submittedData.phone}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Dịch vụ:</span>
-                <span className="font-semibold text-brand-600">
-                  {getServiceTitle(submittedData.serviceId)}
-                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Thời gian hẹn:</span>
@@ -488,15 +368,7 @@ export default function BookingFormSection() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-2"
           >
-            <Suspense
-              fallback={
-                <Card className="p-10 text-center text-muted-foreground">
-                  Đang tải biểu mẫu đặt lịch...
-                </Card>
-              }
-            >
-              <BookingFormInner />
-            </Suspense>
+            <BookingFormInner />
           </motion.div>
 
           {/* Right Column: Clinic Info & Notes */}
@@ -524,7 +396,10 @@ export default function BookingFormSection() {
 
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3">
-                    <Phone size={16} className="mt-0.5 shrink-0 text-white/80" />
+                    <Phone
+                      size={16}
+                      className="mt-0.5 shrink-0 text-white/80"
+                    />
                     <div>
                       <span className="block text-xs text-white/75">
                         Hotline phòng khám
@@ -539,7 +414,10 @@ export default function BookingFormSection() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Clock size={16} className="mt-0.5 shrink-0 text-white/80" />
+                    <Clock
+                      size={16}
+                      className="mt-0.5 shrink-0 text-white/80"
+                    />
                     <div>
                       <span className="block text-xs text-white/75">
                         Giờ mở cửa

@@ -13,7 +13,7 @@ export interface Appointment {
   fullName: string;
   phone: string;
   email?: string;
-  serviceId: string;
+  serviceId?: string;
   preferredDate: string;
   preferredTime: string;
   notes?: string;

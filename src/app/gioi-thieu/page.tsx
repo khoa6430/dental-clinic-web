@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Về Chúng Tôi",
   description:
     "Nha Khoa Thu Mảnh - Hành trình 15 năm mang đến nụ cười tự tin cho hàng ngàn khách hàng. Tìm hiểu về đội ngũ bác sĩ, giá trị cốt lõi và lịch sử phát triển của chúng tôi.",
+  alternates: {
+    canonical: "/gioi-thieu",
+  },
 };
 
 export default function GioiThieuPage() {

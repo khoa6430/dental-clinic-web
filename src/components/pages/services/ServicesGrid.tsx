@@ -94,7 +94,7 @@ export default function ServicesGrid() {
                         asChild
                         className="bg-slate-900 hover:bg-slate-800 text-white px-5"
                       >
-                        <Link href={`/dat-lich?service=${service.id}`}>
+                        <Link href="/dat-lich">
                           Đặt Lịch
                         </Link>
                       </Button>
